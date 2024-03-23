@@ -5,7 +5,6 @@ import { Container } from '@mui/system';
 import JobCard from '../components/JobCard';
 import PaginationButton from '../components/PaginationButton';
 
-import { AppContext } from '../AppContext';
 
 
 function HomePage() {
