@@ -8,12 +8,8 @@ import PaginationButton from '../components/PaginationButton';
 
 
 function HomePage() {
-
-
   return (
-  
       <Container>
-        
         <Grid container spacing={2} mt={1}>
           {jobs.slice(0,5).map((job)=> (
             <Grid key={job.id} item xs={12} md={6} lg={4}>
@@ -25,10 +21,7 @@ function HomePage() {
         <Grid mt={2}>
           {<PaginationButton/>}
         </Grid>
-        
       </Container>
-   
-    
   );
 }
 

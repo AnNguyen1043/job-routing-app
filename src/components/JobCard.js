@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {  CardActionArea } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SkillChip from './SkillChip';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -11,11 +11,19 @@ import { AppContext } from '../AppContext';
 
 
 export default function JobCard({job}) {
-  const {isLoggedin, handleOpenLogIn } = useContext(AppContext);
+  const { isLoggedin, handleOpenLogIn } = useContext(AppContext);
+  const [_, setSearchParams] = useSearchParams();
+  
 
-  const onDetailClick=()=>{
-    isLoggedin? navigate(`/job/${job.id}`) 
-    : handleOpenLogIn({jobId: job.id});
+  const onDetailClick = () => {
+    if(isLoggedin){
+      navigate(`/job/${job.id}`);
+      return;
+    }
+    handleOpenLogIn()
+
+    setSearchParams({ redirectTo: `/job/${job.id}` });
+    
   }
 
 

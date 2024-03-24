@@ -2,12 +2,13 @@ import React from 'react'
 import SearchAppBar from './components/SearchAppBar'
 import HomePage from './pages/HomePage'
 import DetailPage from './pages/DetailPage'
-import {Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material'
 import AppProvider from './AppContext'
 // import {  red } from '@mui/material/colors';
 import "./style/app.scss"
+import SignInModal from './components/SignInModal'
 
 const theme = createTheme({
   palette: {
@@ -18,7 +19,7 @@ const theme = createTheme({
     secondary: {
       main: '#D32F2F',
     },
-    info:{
+    info: {
       main: '#FFB74D',
     }
   },
@@ -26,20 +27,22 @@ const theme = createTheme({
 
 function App() {
   return (
-    
+
     <div>
       <ThemeProvider theme={theme}>
         <AppProvider>
-        <CssBaseline />
-        <SearchAppBar/>
-        <Routes>
-          <Route path="/" element={<HomePage/>}></Route>
-          <Route path="/job/:id" element={<DetailPage/>}> </Route>
-        </Routes>
+          <CssBaseline />
+          <SearchAppBar />
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/job/:id" element={<DetailPage />}> </Route>
+          </Routes>
+
+          <SignInModal />
         </AppProvider>
       </ThemeProvider>
     </div>
-    
+
   )
 }
 

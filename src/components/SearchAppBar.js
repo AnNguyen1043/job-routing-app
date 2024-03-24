@@ -7,16 +7,15 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppContext } from '../AppContext';
-import SignInModal from './SignInModal';
 
 export default function ButtonAppBar() {
-  const {isLoggedin,handleOpenLogIn, handleCloseLogIn}=useContext(AppContext); 
-  
-  const handleLoginClick= ()=>{
+  const { isLoggedin, handleOpenLogIn, handleCloseLogIn } = useContext(AppContext);
+
+  const handleLoginClick = () => {
     handleOpenLogIn();
   }
 
-  const handleLogoutClick= ()=>{
+  const handleLogoutClick = () => {
     handleCloseLogIn();
   }
 
@@ -37,16 +36,16 @@ export default function ButtonAppBar() {
             JOBS
           </Typography>
           {(isLoggedin)
-          ?
-          (
-          <Button color="inherit" onClick={handleLogoutClick}>Name Logout</Button>
-          )
-          :
-          (<Button color="inherit" onClick={handleLoginClick}>Login</Button>)}
-          
+            ?
+            (
+              <Button color="inherit" onClick={handleLogoutClick}>Name Logout</Button>
+            )
+            :
+            (<Button color="inherit" onClick={handleLoginClick}>Login</Button>)}
+
         </Toolbar>
       </AppBar>
-      <SignInModal />
+
     </Box>
   );
 }
